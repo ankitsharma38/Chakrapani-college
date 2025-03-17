@@ -22,7 +22,7 @@ export default function Navbar() {
 
         {/* Navigation Links */}
         <div className={`md:flex md:items-center space-x-6 ${menuOpen ? "block" : "hidden"} md:block absolute md:relative top-16 md:top-auto left-0 w-full md:w-auto bg-gray-900 md:bg-transparent p-4 md:p-0`}>
-          {["Home", "About", "Courses", "Blog", "Contact"].map((item, index) => (
+          {["Home", "About", "Courses", "Blogs", "Contact"].map((item, index) => (
             <Link
               key={index}
               to={`/${item.toLowerCase()}`}

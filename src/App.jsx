@@ -4,6 +4,9 @@ import Home from './pages/Home/Home';
 import Contact from './components/Sections/Contact';
 import Courses from './components/Sections/Courses';
 import AboutUs from './pages/About/AboutUs';
+import BlogList from './pages/Blog/BlogList';
+import SingleBlog from './pages/Blog/SingleBlog';
+
 
 export default function App() {
   return (
@@ -16,6 +19,9 @@ export default function App() {
             <Route path="/contact" element={<Contact/>} />
             <Route path="/courses" element={<Courses/>} />
             <Route path="/about" element={<AboutUs/>} />
+
+            <Route path="/blogs" element={<BlogList/>} />
+            <Route path="/blogs/:id" element={<SingleBlog/>} />
           </Routes>
         </Layout>
       </div>
