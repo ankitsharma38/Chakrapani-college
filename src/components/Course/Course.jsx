@@ -1,7 +1,7 @@
 // Course.jsx
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { 
+import {
   BookOpen,
   Clock,
   GraduationCap,
@@ -14,8 +14,10 @@ import {
   Microscope,
   Activity,
   Syringe,
-  Shield
+  Shield,
 } from "lucide-react";
+import { RingLoader, ClipLoader } from "react-spinners";
+
 import { courses } from "./courseData";
 
 // Create icon map
@@ -29,23 +31,46 @@ const iconComponents = {
   microscope: Microscope,
   activity: Activity,
   syringe: Syringe,
-  shield: Shield
+  shield: Shield,
 };
 
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.2 }
-  }
+    transition: { staggerChildren: 0.2 },
+  },
 };
 
 const itemVariants = {
   hidden: { y: 20, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { duration: 0.5 } }
+  visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
 };
 
 const Course = () => {
+  const [loading, setLoading] = useState(true); // Add loading state
+
+  // Simulate loading delay
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000); // Simulate a 2-second loading delay
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    //     return (
+    //       <div className="flex justify-center items-center h-screen">
+    //         <ClipLoader color="#10B981" size={50} /> {/* Green spinner */}
+    //       </div>
+    //     );
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <RingLoader color="#10B981" size={80} />
+      </div>
+    );
+  }
+
   return (
     <section id="courses" className="py-16 bg-white scroll-mt-16">
       <div className="container mx-auto px-4">
