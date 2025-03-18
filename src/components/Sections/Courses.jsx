@@ -3,6 +3,69 @@ import bookIcon from '/icons/book.png'; // Add icons in public/icons folder
 import durationIcon from '/icons/duration.png';
 import feesIcon from '/icons/fees.png';
 import scholarshipIcon from '/icons/scholarship.png';
+// const courses = [
+//   { 
+//     name: 'MA In Yogashatra',
+//     duration: '2 Years',
+//     fees: '25000/year',
+//     icon: Lotus,
+//     image: 'https://images.unsplash.com/photo-1599447421416-3414500d18a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+//     description: 'Advanced studies in yoga philosophy and practice'
+//   },
+//   { 
+//     name: 'B.Sc. In Yoga & Naturopathy',
+//     duration: '3 Years',
+//     fees: '25000/year',
+//     icon: Brain,
+//     image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+//     description: 'Comprehensive program combining yoga and natural healing'
+//   },
+//   { 
+//     name: 'BA In Yogashatra',
+//     duration: '3 Years',
+//     fees: '17000/year',
+//     scholarship: true,
+//     icon: Heart,
+//     image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+//     description: 'Foundation course in yoga studies'
+//   },
+//   { 
+//     name: 'Diploma In Yoga Application',
+//     duration: '1 Year',
+//     fees: '20000/-',
+//     icon: Yoga,
+//     image: 'https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+//     description: 'Practical yoga application techniques'
+//   },
+//   { 
+//     name: 'Diploma in Yoga, Naturopathy & Dietetics (DYND)',
+//     duration: '2 Years',
+//     fees: '20000/-',
+//     icon: Leaf,
+//     image: 'https://images.unsplash.com/photo-1512438248247-f0f2a5a8b7f0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+//     description: 'Integrated approach to wellness and nutrition'
+//   },
+//   { 
+//     name: 'Diploma In Panchakarma',
+//     duration: '2 Years',
+//     fees: '25000/year',
+//     icon: Sparkles,
+//     image: 'https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+//     description: 'Specialized training in traditional healing methods'
+//   },
+//   { 
+//     name: 'Diploma In Ayurved Massage & Panchakarma Technician',
+//     duration: '1 Year',
+//     fees: '20000/-',
+//     icon: Heart,
+//     image: 'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+//     description: 'Professional training in therapeutic techniques'
+//   },
+  
+
+// ];
+
+
 
 const courses = [
   {
