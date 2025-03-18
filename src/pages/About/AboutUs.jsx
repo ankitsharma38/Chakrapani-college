@@ -1,5 +1,4 @@
-// AboutUs.jsx
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Typography,
@@ -11,6 +10,7 @@ import {
 } from "@mui/material";
 import { motion } from "framer-motion";
 import { sections } from "./aboutData";
+import { RingLoader, PropagateLoader  } from "react-spinners"; // Import the spinner
 
 // Framer Motion Variants for Cards
 const cardVariants = {
@@ -23,6 +23,25 @@ const cardVariants = {
 };
 
 const AboutUs = () => {
+  const [loading, setLoading] = useState(true); // Add loading state
+
+  // Simulate loading delay
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000); // Simulate a 2-second loading delay
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Return spinner while loading
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <PropagateLoader  color="#10B981" size={30} /> {/* Spinner */}
+      </div>
+    );
+  }
+
   return (
     <Box
       sx={{
