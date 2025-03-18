@@ -46,7 +46,7 @@ const AboutUs = () => {
               textShadow: "0 2px 4px rgba(0,0,0,0.5)",
             }}
           >
-            About Our Institution
+            About Us
           </Typography>
           <Typography
             variant="h6"
