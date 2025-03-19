@@ -6,6 +6,7 @@ import BlogList from './pages/Blog/BlogList';
 import SingleBlog from './pages/Blog/SingleBlog';
 import Course from './components/Course/Course';
 import Contact from './components/Contact/Contact';
+import Achievements from './components/Achievements/Achievements';
 
 
 export default function App() {
@@ -22,6 +23,14 @@ export default function App() {
             <Route path="/courses" element={<Course/>} />
             <Route path="/blogs" element={<BlogList/>} />
             <Route path="/blogs/:id" element={<SingleBlog/>} />
+
+
+            <Route path="/achievements" element={<Achievements/>} />
+
+
+
+
+
           </Routes>
         </Layout>
       </div>
