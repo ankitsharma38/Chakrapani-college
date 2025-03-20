@@ -39,13 +39,13 @@ const Achievements = () => {
   return (
     <Box
       sx={{
-        py: 10,
+        py: 6,
         background: "#fafffc",
       }}
     >
-      <Container maxWidth="xl">
+      <Container maxWidth={false} disableGutters>
         {/* Title Section */}
-        <Box textAlign="center" mb={8}>
+        <Box textAlign="center" mb={7}>
           <Typography
             variant="h6"
             sx={{
@@ -55,8 +55,11 @@ const Achievements = () => {
             }}
           >
             Recognized by{" "}
-            <span className="text-amber-600">Kavi Kulguru Kalidas Sanskrit University</span>, Over 1,000 graduates since
-            inception. State-of-the-art facilities for students.
+            <span className="text-amber-600">
+              Kavi Kulguru Kalidas Sanskrit University
+            </span>
+            , Over 1,000 graduates since inception. State-of-the-art facilities
+            for students.
           </Typography>
         </Box>
 
@@ -71,17 +74,40 @@ const Achievements = () => {
           <Card
             sx={{
               p: 4,
-              borderRadius: 4,
-              background: theme.palette.background.paper,
               boxShadow: theme.shadows[4],
               display: "flex",
+              backgroundColor: "#a5a5a5",
               alignItems: "center",
               justifyContent: "center",
-              flexDirection: { xs: "column", md: "row" }, // Responsive layout
+              width: "100%",
+              maxWidth: "none",
+              flexDirection: { xs: "column", md: "row" },
+
+              // Background SVG with opacity
+              backgroundImage: `url('https://ik.imagekit.io/julyhwpbw/undraw_graduation_u7uc.svg?updatedAt=1742497182857')`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              position: "relative",
+              "&::before": {
+                content: '""',
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                backgroundColor: "rgba(255, 255, 255, 0.9)", // White layer with 40% opacity
+                zIndex: 1,
+              },
+              "& > *": {
+                zIndex: 2, // Ensure content is above the background
+              },
             }}
           >
             {/* Graduates Section */}
-            <Box sx={{ flex: 1, textAlign: "center", px: 4, mb: { xs: 4, md: 0 } }}>
+            <Box
+              sx={{ flex: 1, textAlign: "center", px: 4, mb: { xs: 4, md: 0 } }}
+            >
               <Avatar
                 sx={{
                   width: 80,
