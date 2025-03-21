@@ -59,11 +59,6 @@ const Course = () => {
   }, []);
 
   if (loading) {
-    //     return (
-    //       <div className="flex justify-center items-center h-screen">
-    //         <ClipLoader color="#10B981" size={50} /> {/* Green spinner */}
-    //       </div>
-    //     );
     return (
       <div className="flex justify-center items-center h-screen">
         <RingLoader color="#10B981" size={80} />
