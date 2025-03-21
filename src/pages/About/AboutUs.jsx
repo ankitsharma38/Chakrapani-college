@@ -8,7 +8,7 @@ import {
   Button,
   useMediaQuery,
 } from "@mui/material";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { sections } from "./aboutData";
 
 // Animation Variants
@@ -37,8 +37,23 @@ const subtitleVariants = {
   },
 };
 
+// Bubble Animation Variants
+const bubbleVariants = {
+  animate: {
+    y: [0, -20, 0], // Auto up-and-down loop
+    transition: {
+      duration: 4,
+      ease: "easeInOut",
+      repeat: Infinity,
+      repeatType: "loop",
+    },
+  },
+};
+
 const AboutUs = () => {
   const isMobile = useMediaQuery("(max-width:600px)");
+  const { scrollY } = useScroll();
+  const bubbleY = useTransform(scrollY, [0, 500], [0, -100]); // Scroll-triggered movement
 
   return (
     <Box sx={{ minHeight: "100vh", overflow: "hidden" }}>
@@ -91,31 +106,41 @@ const AboutUs = () => {
                   fontSize: { xs: "1.2rem", md: "1.5rem" },
                 }}
               >
-                Chakrapani Panchakarma Yoga Nisargopchar Mahavidyalaya <br /> <span>- A legacy of wellness and wisdom</span>
+                Chakrapani Panchakarma Yoga Nisargopchar Mahavidyalaya - A legacy of wellness and wisdom
               </Typography>
             </motion.div>
           </motion.div>
         </Container>
       </Box>
 
-      {/* Content Sections with Bubble Texture */}
-      <Box
-        sx={{
-          bgcolor: "#f0fdf4",
-          py: { xs: 6, md: 10 },
-          position: "relative",
-          "&:before": {
-            content: '""',
+      {/* Content Sections with Animated Bubbles */}
+      <Box sx={{ bgcolor: "#f0fdf4", py: { xs: 6, md: 10 }, position: "relative" }}>
+        <motion.svg
+          style={{
             position: "absolute",
-            inset: 0,
-            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Ccircle cx='30' cy='30' r='15' fill='%23FF6F61' opacity='0.3'/%3E%3Ccircle cx='80' cy='50' r='10' fill='%239B59B6' opacity='0.2'/%3E%3Ccircle cx='150' cy='80' r='30' fill='%233498DB' opacity='0.50'/%3E%3Ccircle cx='40' cy='120' r='12' fill='%23E74C3C' opacity='0.8'/%3E%3Ccircle cx='100' cy='150' r='18' fill='%23F1C40F' opacity='0.2'/%3E%3Ccircle cx='170' cy='170' r='14' fill='%232ECC71' opacity='0.25'/%3E%3C/svg%3E")`,
-            backgroundRepeat: "repeat",
-            backgroundSize: "200px 200px",
-            opacity: 0.2,
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
             zIndex: 0,
-          },
-        }}
-      >
+            y: bubbleY, // Scroll-triggered movement
+          }}
+          animate="animate" // Auto up-and-down animation
+          variants={bubbleVariants}
+          preserveAspectRatio="none"
+        >
+          <rect width="100%" height="100%" fill="url(#bubblePattern)" opacity={0.2} />
+          <defs>
+            <pattern id="bubblePattern" width="200" height="200" patternUnits="userSpaceOnUse">
+              <circle cx="30" cy="30" r="15" fill="#FF6F61" opacity="0.3" />
+              <circle cx="80" cy="50" r="10" fill="#9B59B6" opacity="0.2" />
+              <circle cx="150" cy="80" r="20" fill="#3498DB" opacity="0.25" />
+              <circle cx="40" cy="120" r="12" fill="#E74C3C" opacity="0.3" />
+              <circle cx="100" cy="150" r="18" fill="#F1C40F" opacity="0.2" />
+              <circle cx="170" cy="170" r="14" fill="#2ECC71" opacity="0.25" />
+            </pattern>
+          </defs>
+        </motion.svg>
         <Container sx={{ position: "relative", zIndex: 1 }}>
           {sections.map((section, index) => (
             <motion.div
