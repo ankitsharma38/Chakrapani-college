@@ -1,192 +1,243 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   Box,
   Typography,
   Container,
-  Grid,
   Card,
   Avatar,
-  Divider,
+  Button,
+  useMediaQuery,
 } from "@mui/material";
 import { motion } from "framer-motion";
 import { sections } from "./aboutData";
-import { RingLoader, PropagateLoader  } from "react-spinners"; // Import the spinner
 
-// Framer Motion Variants for Cards
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-  hover: {
-    scale: 1.02,
-    transition: { type: "spring", stiffness: 300 },
+// Animation Variants
+const sectionVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
+};
+
+// Hero Section Animations
+const titleVariants = {
+  hidden: { opacity: 0, scale: 0.8, y: -50 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: "easeOut", delay: 0.2 },
+  },
+};
+
+const subtitleVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: "easeOut", delay: 0.4 },
   },
 };
 
 const AboutUs = () => {
-  const [loading, setLoading] = useState(true); // Add loading state
-
-  // Simulate loading delay
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2000); // Simulate a 2-second loading delay
-    return () => clearTimeout(timer);
-  }, []);
-
-  // Return spinner while loading
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <PropagateLoader  color="#10B981" size={30} /> {/* Spinner */}
-      </div>
-    );
-  }
+  const isMobile = useMediaQuery("(max-width:600px)");
 
   return (
-    <Box
-      sx={{
-        py: 9,
-        background: "linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7))",
-        position: "relative",
-        backgroundImage: `url('https://images.unsplash.com/photo-1603988363607-e1e4a66962c6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3')`,
-        backgroundSize: "cover",
-      }}
-    >
-      <Container maxWidth="xl">
-        {/* Title Section */}
-        <Box textAlign="center" mb={5}>
-          <Typography
-            variant="h3"
-            sx={{
-              fontWeight: 600,
-              color: "black",
-              fontSize: { xs: "1.8rem", md: "2.2rem" },
-              mb: 2,
-              textShadow: "0 2px 4px rgba(0,0,0,0.5)",
-            }}
-          >
-            About Us
-          </Typography>
-          <Typography
-            variant="h6"
-            align="center"
-            sx={{
-              mb: 6,
-              color: "black",
-              textShadow: "0 2px 4px rgba(0,0,0,0.5)",
-            }}
-          >
-            Discover the story behind Chakrapani Panchakarma Yoga Nisargopchar
-            Mahavidyalaya
-          </Typography>
-        </Box>
-
-        {/* Cards Grid */}
-        <Grid container spacing={6}>
-          {sections.map((section, index) => (
-            <Grid item xs={12} md={6} key={index}>
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                whileHover="hover"
-                viewport={{ once: true }}
-                variants={cardVariants}
-                style={{ height: "100%" }}
+    <Box sx={{ minHeight: "100vh", overflow: "hidden" }}>
+      {/* Hero Section */}
+      <Box
+        sx={{
+          minHeight: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          textAlign: "center",
+          bgcolor: "#1A1F2A",
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1544367567-0f2fcb009655?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          position: "relative",
+          "&:before": {
+            content: '""',
+            position: "absolute",
+            inset: 0,
+            bgcolor: "rgba(26, 31, 42, 0.7)",
+          },
+        }}
+      >
+        <Container sx={{ position: "relative", zIndex: 1 }}>
+          <motion.div initial="hidden" animate="visible">
+            <motion.div variants={titleVariants}>
+              <Typography
+                variant="h1"
+                sx={{
+                  fontWeight: 900,
+                  fontSize: { xs: "3rem", md: "5rem" },
+                  color: "#FF6F61",
+                  mb: 2,
+                  letterSpacing: "-0.03em",
+                }}
               >
-                <Card
+                Who We Are
+              </Typography>
+            </motion.div>
+            <motion.div variants={subtitleVariants}>
+              <Typography
+                variant="h5"
+                sx={{
+                  fontWeight: 300,
+                  color: "#FFFFFF",
+                  maxWidth: 700,
+                  mx: "auto",
+                  fontSize: { xs: "1.2rem", md: "1.5rem" },
+                }}
+              >
+                Chakrapani Panchakarma Yoga Nisargopchar Mahavidyalaya <br /> <span>- A legacy of wellness and wisdom</span>
+              </Typography>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Box>
+
+      {/* Content Sections with Bubble Texture */}
+      <Box
+        sx={{
+          bgcolor: "#f0fdf4",
+          py: { xs: 6, md: 10 },
+          position: "relative",
+          "&:before": {
+            content: '""',
+            position: "absolute",
+            inset: 0,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Ccircle cx='30' cy='30' r='15' fill='%23FF6F61' opacity='0.3'/%3E%3Ccircle cx='80' cy='50' r='10' fill='%239B59B6' opacity='0.2'/%3E%3Ccircle cx='150' cy='80' r='30' fill='%233498DB' opacity='0.50'/%3E%3Ccircle cx='40' cy='120' r='12' fill='%23E74C3C' opacity='0.8'/%3E%3Ccircle cx='100' cy='150' r='18' fill='%23F1C40F' opacity='0.2'/%3E%3Ccircle cx='170' cy='170' r='14' fill='%232ECC71' opacity='0.25'/%3E%3C/svg%3E")`,
+            backgroundRepeat: "repeat",
+            backgroundSize: "200px 200px",
+            opacity: 0.2,
+            zIndex: 0,
+          },
+        }}
+      >
+        <Container sx={{ position: "relative", zIndex: 1 }}>
+          {sections.map((section, index) => (
+            <motion.div
+              key={index}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={sectionVariants}
+              style={{ marginBottom: isMobile ? 40 : 60 }}
+            >
+              <Card
+                sx={{
+                  display: "flex",
+                  flexDirection: isMobile ? "column" : index % 2 === 0 ? "row" : "row-reverse",
+                  alignItems: "center",
+                  bgcolor: "transparent",
+                  boxShadow: "none",
+                  borderRadius: 0,
+                  gap: 4,
+                }}
+              >
+                <Box
                   sx={{
-                    height: 320,
-                    position: "relative",
-                    overflow: "hidden",
-                    borderRadius: 2,
-                    boxShadow: 3,
-                    backgroundImage: `url(${section.image})`,
+                    flex: 1,
+                    height: { xs: 200, md: 300 },
+                    backgroundImage: `url(${section.image || 'https://images.unsplash.com/photo-1545205597-3d9c2396e6f3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3'})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
-                    "&:hover": {
-                      "& .contentOverlay": {
-                        backdropFilter: "blur(0px)",
-                        backgroundColor: "rgba(0, 0, 0, 0.4)",
-                      },
-                    },
+                    borderRadius: 3,
+                    boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
                   }}
-                >
-                  {/* Glass Morphism Overlay */}
-                  <Box
-                    className="contentOverlay"
+                />
+                <Box sx={{ flex: 1, p: 2 }}>
+                  <Avatar
+                    src={section.icon}
                     sx={{
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      width: "100%",
-                      height: "100%",
-                      backgroundColor: "rgba(0, 0, 0, 0.6)",
-                      backdropFilter: "blur(8px)",
-                      transition: "all 0.3s ease-in-out",
-                      p: 3,
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      border: "1px solid rgba(255, 255, 255, 0.1)",
-                      boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+                      width: 60,
+                      height: 60,
+                      bgcolor: "#FF6F61",
+                      mb: 2,
+                      boxShadow: "0 4px 12px rgba(255, 111, 97, 0.3)",
+                    }}
+                  />
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      fontWeight: 700,
+                      color: "#1A1F2A",
+                      mb: 1,
+                      fontSize: { xs: "1.5rem", md: "2rem" },
                     }}
                   >
-                    <Avatar
-                      src={section.icon}
-                      sx={{
-                        width: 60,
-                        height: 60,
-                        mb: 2,
-                        backgroundColor: "rgba(255, 255, 255, 0.1)",
-                        backdropFilter: "blur(4px)",
-                      }}
-                    />
-
-                    <Typography
-                      variant="h5"
-                      sx={{
-                        color: "white",
-                        fontWeight: 600,
-                        mb: 1.5,
-                        textAlign: "center",
-                        fontSize: { xs: "1.2rem", md: "1.4rem" },
-                        textShadow: "0 2px 4px rgba(0,0,0,0.3)",
-                      }}
-                    >
-                      {section.title}
-                    </Typography>
-
-                    <Divider
-                      sx={{
-                        width: "30%",
-                        height: 2,
-                        backgroundColor: "rgba(255, 255, 255, 0.3)",
-                        my: 1.5,
-                      }}
-                    />
-
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        color: "rgba(255, 255, 255, 0.9)",
-                        fontSize: "0.95rem",
-                        lineHeight: 1.6,
-                        textAlign: "center",
-                        maxWidth: 500,
-                        mt: 1,
-                        textShadow: "0 1px 2px rgba(0,0,0,0.2)",
-                      }}
-                    >
-                      {section.text}
-                    </Typography>
-                  </Box>
-                </Card>
-              </motion.div>
-            </Grid>
+                    {section.title}
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      color: "#4A4A4A",
+                      lineHeight: 1.7,
+                      fontSize: { xs: "1rem", md: "1.1rem" },
+                    }}
+                  >
+                    {section.text}
+                  </Typography>
+                </Box>
+              </Card>
+            </motion.div>
           ))}
-        </Grid>
-      </Container>
+        </Container>
+      </Box>
+
+      {/* CTA Section */}
+      <Box
+        sx={{
+          py: 8,
+          bgcolor: "#FF6F61",
+          textAlign: "center",
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1505455184862-554165e5f6ba?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          position: "relative",
+          "&:before": {
+            content: '""',
+            position: "absolute",
+            inset: 0,
+            bgcolor: "rgba(255, 111, 97, 0.8)",
+          },
+        }}
+      >
+        <Container sx={{ position: "relative", zIndex: 1 }}>
+          <Typography
+            variant="h3"
+            sx={{ fontWeight: 700, color: "#FFFFFF", mb: 2 }}
+          >
+            Join Our Journey
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{ color: "#FFF", maxWidth: 600, mx: "auto", mb: 4, fontSize: "1.1rem" }}
+          >
+            Explore the heart of our mission and become part of our story.
+          </Typography>
+          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+            <Button
+              variant="contained"
+              sx={{
+                bgcolor: "#1A1F2A",
+                color: "#FF6F61",
+                px: 4,
+                py: 1.5,
+                borderRadius: 3,
+                fontWeight: 600,
+                fontSize: "1rem",
+                "&:hover": { bgcolor: "#2A3342" },
+              }}
+            >
+              Discover More
+            </Button>
+          </motion.div>
+        </Container>
+      </Box>
     </Box>
   );
 };

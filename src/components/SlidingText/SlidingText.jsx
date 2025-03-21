@@ -37,7 +37,7 @@ const SlidingText = () => {
             pr: 30, // Add spacing between repeated text
           }}
         >
-          Chakrapani Panchakarma Yoga Nisargopchar Mahavidyalaya
+          Welcome to Chakrapani Panchakarma Yoga 
         </Typography>
         {/* Repeat the text for a seamless effect */}
 
