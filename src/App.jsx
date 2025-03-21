@@ -28,8 +28,7 @@ export default function App() {
             <Route path="/achievements" element={<Achievements/>} />
 
 
-
-
+        
 
           </Routes>
         </Layout>
