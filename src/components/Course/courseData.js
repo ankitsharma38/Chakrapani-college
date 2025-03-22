@@ -10,8 +10,8 @@
        description: 'Advanced studies in yoga philosophy and practice'
      },
      { 
-       name: 'B.Sc. In Yoga & Naturopathy',
-       duration: '3 Years',
+       name: 'B.Sc. In Yoga & Naturopathy Dietetics (BYND)',
+       duration: '4 Years',
        fees: '25000/year',
        icon: 'brain',
        image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
@@ -31,7 +31,7 @@
        duration: '1 Year',
        fees: '20000/-',
        icon: 'yoga',
-       image: 'https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+       image: 'https://ik.imagekit.io/julyhwpbw/yogaa.jpg?updatedAt=1742635918111',
        description: 'Practical yoga application techniques'
      },
      { 
