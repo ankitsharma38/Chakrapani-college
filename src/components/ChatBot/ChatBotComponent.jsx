@@ -26,6 +26,20 @@ const ChatBotComponent = () => {
     );
   };
 
+  // Fine-tuned function to format the course list attractively
+  const formatCourseList = () => {
+    return (
+      "Here’s a list of our amazing courses:\n\n" +
+      courses
+        .map(
+          (course, index) =>
+            `🌟 ${index + 1}. ${course.name}\n   - Duration: ${course.duration}\n   - Fees: ${course.fees}`
+        )
+        .join("\n\n") +
+      "\n\nWhich one interests you? Type its name for more details!"
+    );
+  };
+
   // Chatbot steps
   const steps = [
     {
@@ -57,7 +71,7 @@ const ChatBotComponent = () => {
     },
     {
       id: "course_list",
-      message: () => `Here are our courses:\n${courses.map((c) => c.name).join(", ")}`,
+      message: formatCourseList, // Use the fine-tuned function here
       trigger: "course_list_end",
     },
     {
