@@ -7,6 +7,8 @@ import SingleBlog from './pages/Blog/SingleBlog';
 import Course from './components/Course/Course';
 import Contact from './components/Contact/Contact';
 import Achievements from './components/Achievements/Achievements';
+import NotFound from './pages/NotFound/NotFound';
+import ChatBotComponent from './components/ChatBot/ChatBotComponent';
 
 
 export default function App() {
@@ -26,12 +28,14 @@ export default function App() {
 
 
             <Route path="/achievements" element={<Achievements/>} />
+            <Route path="*" element={<NotFound/>} /> {/* 404 Page */}
 
 
         
 
           </Routes>
         </Layout>
+        <ChatBotComponent/>
       </div>
     </Router>
   );
